@@ -1,0 +1,84 @@
+body{
+    background-image: url("./img/background.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+}
+
+
+header{
+    padding: 20px 10%;
+    background-color: rgba(247, 247, 247, 0.9);
+    border-bottom: 1px solid #d1d1d1;
+}
+
+
+@media (max-width:980px){
+    header{
+        padding: 20px 1%;
+    }
+}
+
+header h1{
+    display: inline;
+    line-height: 0.6;
+
+}
+
+#search{
+    width: 10vw;
+}
+
+#search-span{
+    overflow: hidden;
+    width: 50%;
+    float: right;
+}
+
+main, footer{
+    margin: auto;
+    width: 75%;
+}
+
+section{
+    margin: 10px 20px;
+    padding: 0;
+    clear: both;
+    border: 1px solid #d1d1d1;
+    float: left; width: 98%;
+    background-color: rgba(247, 247, 247, 0.9);
+}
+
+
+section img{
+    width: 30%;
+    margin-right: 20px;
+    float: left;
+}
+
+section a{
+    clear: both;
+}
+
+a{
+    text-decoration: none;
+    color: chocolate;
+}
+
+a:hover{
+    color: burlywood;
+}
+
+#more-button{
+    text-align: center;
+    display: block;
+    margin: 40px;
+
+}
+
+#not-found{
+    color: chocolate;
+    text-align: center;
+    display: none;
+}
