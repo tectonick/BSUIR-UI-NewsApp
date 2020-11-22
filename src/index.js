@@ -81,23 +81,7 @@ document.getElementById('more-button').addEventListener('click',(e)=>{
 })
 
 document.getElementById('search-btn').addEventListener('click',()=>{
-    let val=document.getElementById('search').value;
-    let newsItems=document.getElementsByClassName('news-item');
-    let found=false;
-    for (let index = 0; index < newsItems.length; index++) {
-        if (newsItems[index].innerHTML.indexOf(val)<0){
-            newsItems[index].style.display='none';
-        } else{
-            newsItems[index].style.display='block';
-            found=true;
-        }        
-    }
-
-    if (!found){
-        document.getElementById('not-found').style.display='block';
-    } else {
-        document.getElementById('not-found').style.display='none';
-    }
+    filter();
 });
 
 document.getElementById("search").addEventListener("keyup", function(event) {
@@ -108,25 +92,39 @@ document.getElementById("search").addEventListener("keyup", function(event) {
 });
 
 document.getElementById('filter').addEventListener('change',(e)=>{
-    let source=e.target.value;
-    let newsItems=document.getElementsByClassName('news-item');
-
-    for (let index = 0; index < newsItems.length; index++) {
-        if (source=='Все источники'){
-            newsItems[index].style.display='block';
-            continue;
-        }
-        let newsSource=newsItems[index].getElementsByTagName('em')[0];
-        if (newsSource.innerHTML.indexOf(source)<0 ){
-            newsItems[index].style.display='none';
-        } else{
-            newsItems[index].style.display='block';
-        }        
-    }
-    document.getElementById('not-found').style.display='none';
-    
-
-
+    filter();
 })
+
+function filter(){
+    let val=document.getElementById('search').value;
+    let source=document.getElementById('filter').value;
+
+    let newsItems=document.getElementsByClassName('news-item');
+    let found=false;
+    
+    for (let index = 0; index < newsItems.length; index++) {
+
+        let newsSource=newsItems[index].getElementsByTagName('em')[0];
+
+        if ((newsSource.innerHTML.indexOf(source)>=0)||(source=='Все источники')){
+
+            if ((newsItems[index].innerHTML.indexOf(val)>=0)||(val=='')){
+                newsItems[index].style.display='block';
+                found=true;
+            } else{
+                newsItems[index].style.display='none';
+            }            
+
+        } else{
+            newsItems[index].style.display='none';
+        }   
+    }
+
+    if (!found){
+        document.getElementById('not-found').style.display='block';
+    } else {
+        document.getElementById('not-found').style.display='none';
+    }
+}
 
 init();
